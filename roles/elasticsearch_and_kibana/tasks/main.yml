@@ -1,0 +1,26 @@
+---
+- name: Include Elasticsearch repo assert task
+  ansible.builtin.import_tasks: elastic_repo_assert.yml
+  run_once: yes
+  delegate_to: localhost
+
+- name: Include Elasticsearch assert task
+  ansible.builtin.import_tasks: elastic_assert.yml
+  run_once: yes
+  delegate_to: localhost
+
+- name: Include Kibana assert task
+  ansible.builtin.import_tasks: kibana_assert.yml
+  run_once: yes
+  delegate_to: localhost
+
+
+- name: Include Elasticsearch repo task
+  ansible.builtin.import_tasks: elastic_repo_add.yml
+
+- name: Include Elasticsearch main task
+  ansible.builtin.import_tasks: elastic_main.yml
+
+- name: Include Kibana main task
+  ansible.builtin.import_tasks: kibana_main.yml
+

@@ -1,0 +1,13 @@
+###############################
+##    Monitoring practice    ##
+###############################
+---
+- name: Monitoring server
+  hosts: ubuntu
+  become: yes
+  
+  roles:
+    - prometheus
+    - node_exporter
+    - fluent_bit    
+    - elasticsearch_and_kibana

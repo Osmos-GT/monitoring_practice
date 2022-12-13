@@ -1,0 +1,35 @@
+---
+# vars file for elastic_repo
+
+# The gpg url is mentioned a few times in `tasks/main.yml`, so better
+# use a variable for it.
+#elastic_repo_gpg_url: "http://elasticrepo.serveradmin.ru/elastic.asc"
+#elastic_repo_gpg_url: "https://artifacts.elastic.co/GPG-KEY-elasticsearch"
+
+# There are two versions of the repository;
+# - `elastic` uses the "Elastic" license.
+# - `oss` uses the "Apache 2.0" license.
+_elastic_repo_apt_repo:
+  elastic: "deb [trusted=yes] https://mirror.yandex.ru/mirrors/elastic/7/ stable main"
+  oss: "deb [trusted=yes] https://mirror.yandex.ru/mirrors/elastic/7/ stable main"
+  # elastic: "deb https://artifacts.elastic.co/packages/7.x/apt stable main"
+  # oss: "deb https://artifacts.elastic.co/packages/oss-7.x/apt stable main"
+elastic_repo_apt_repo: "{{ _elastic_repo_apt_repo[elasticsearch_type] }}"
+
+# There are two versions of the repository;
+# - `elastic` uses the "Elastic" license.
+# - `oss` uses the "Apache 2.0" license.
+# _elastic_repo_rpm_repo:
+#   elastic: "https://artifacts.elastic.co/packages/7.x/yum"
+#   oss: "https://artifacts.elastic.co/packages/oss-7.x/yum"
+# elastic_repo_rpm_repo: "{{ _elastic_repo_rpm_repo[elasticsearch_type] }}"
+
+# vars file for elasticsearch
+
+_elasticsearch_packages:
+  oss:
+    - elasticsearch-oss
+  elastic:
+    - elasticsearch
+
+elasticsearch_packages: "{{ _elasticsearch_packages[elasticsearch_type] }}"

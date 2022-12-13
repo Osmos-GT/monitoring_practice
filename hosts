@@ -1,0 +1,8 @@
+[ubuntu:vars]
+ansible_user=vagrant
+ansible_ssh_pass=vagrant
+ansible_become_pass=vagrant
+ansible_ssh_common_args="-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
+
+[ubuntu]
+192.168.1.77

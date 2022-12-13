@@ -1,0 +1,21 @@
+---
+- name: install kibana
+  ansible.builtin.package:
+    name: "{{ kibana_requirements + kibana_package }}"
+    state: present
+
+- name: configure kibana
+  ansible.builtin.template:
+    src: kibana.yml.j2
+    dest: /etc/kibana/kibana.yml
+    owner: kibana
+    group: kibana
+    mode: "0660"
+  notify:
+    - Restart kibana
+
+- name: start kibana
+  ansible.builtin.service:
+    name: kibana
+    state: started
+    enabled: yes
