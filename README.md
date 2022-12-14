@@ -7,6 +7,8 @@ This Ansible playbook installs Prometheus with node_exporter and EFK stack on Ub
     - fluent_bit
     - elasticsearch_and_kibana
 
+Default values and variables are located in ```defaults``` and ```vars``` directories of each role.
+
 To run this playbook make sure you have all neccessary requirements:
 ```
 python -m pip install -r requirements.txt
